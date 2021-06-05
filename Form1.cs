@@ -10,12 +10,34 @@ using System.Windows.Forms;
 
 namespace DonsElectricCostCalculator
 {
-    public partial class Form1 : Form
+    public partial class formMain : Form
     {
-        public Form1()
+
+        int varAmps = 0;
+        int varWatts = 0;
+        int varVolts = 0;
+ 
+        public formMain()
         {
+            
             InitializeComponent();
         }
 
+        private void radWatts_CheckedChanged(object sender, EventArgs e)
+        {
+            radAmps.Enabled = false;
+            radVolts.Enabled = false;
+            txtWatts.Enabled = false;
+
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+
+            varAmps = Convert.ToInt32(txtAmps.ToString());
+            varVolts = Convert.ToInt32(txtVolts.ToString());
+            varWatts = varAmps * varVolts;
+            txtWatts.Text = varWatts.ToString();
+        }
     }
 }
