@@ -24,6 +24,7 @@ namespace DonsElectricCostCalculator
             
             InitializeComponent();
 
+            this.CenterToScreen();
 
             radAmps.Checked = false;
             radVolts.Checked = false;
@@ -42,12 +43,14 @@ namespace DonsElectricCostCalculator
         {
             if (radWatts.Checked)
             {
+                //calculate watts. Amps x Watts
                 int.TryParse(txtAmps.Text, out varAmps);
                 int.TryParse(txtVolts.Text, out varVolts);
                 varWatts = varAmps * varVolts;
                 txtWatts.Text = varWatts.ToString();
             }
             else if(radVolts.Checked) {
+                //calculate volts. watts/amps
                 int.TryParse(txtWatts.Text, out varWatts);
                 int.TryParse(txtAmps.Text, out varAmps);
                 varVolts = varWatts/varAmps;
@@ -56,6 +59,7 @@ namespace DonsElectricCostCalculator
             }
             else if (radAmps.Checked)
             {
+                //calculate amps. Watts/Volts
                 int.TryParse(txtWatts.Text, out varWatts);
                 int.TryParse(txtVolts.Text, out varVolts);
                 varAmps = varWatts / varVolts;
@@ -70,6 +74,7 @@ namespace DonsElectricCostCalculator
 
         private void radAmps_CheckedChanged(object sender, EventArgs e)
         {
+            //uiser selected amps, disable textbox
             txtWatts.Enabled = true;
             txtAmps.Enabled = false;
             txtVolts.Enabled = true;
@@ -77,6 +82,7 @@ namespace DonsElectricCostCalculator
 
         private void radVolts_CheckedChanged(object sender, EventArgs e)
         {
+            //user selected volts, disable the textbox
             txtWatts.Enabled = true;
             txtAmps.Enabled = true;
             txtVolts.Enabled = false; 
@@ -84,12 +90,27 @@ namespace DonsElectricCostCalculator
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            //clear all text fields
             txtWatts.Text = "";
             txtAmps.Text = "";
             txtVolts.Text = "";
+
+            //disable all checked buttons
             radAmps.Checked = false;
             radVolts.Checked = false;
             radWatts.Checked = false;
+
+            //enable all text fields
+            txtWatts.Enabled = true;
+            txtAmps.Enabled = true;
+            txtVolts.Enabled = true;
+        }
+
+        private void calculateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            formCost formCost = new formCost();
+            formCost.Show();
         }
     }
 }
