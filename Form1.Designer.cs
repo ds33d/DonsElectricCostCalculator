@@ -32,8 +32,8 @@ namespace DonsElectricCostCalculator
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.radWatts = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radAmps = new System.Windows.Forms.RadioButton();
             this.radVolts = new System.Windows.Forms.RadioButton();
+            this.radAmps = new System.Windows.Forms.RadioButton();
             this.txtWatts = new System.Windows.Forms.TextBox();
             this.txtAmps = new System.Windows.Forms.TextBox();
             this.txtVolts = new System.Windows.Forms.TextBox();
@@ -69,17 +69,6 @@ namespace DonsElectricCostCalculator
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options:";
             // 
-            // radAmps
-            // 
-            this.radAmps.AutoSize = true;
-            this.radAmps.Location = new System.Drawing.Point(7, 48);
-            this.radAmps.Name = "radAmps";
-            this.radAmps.Size = new System.Drawing.Size(56, 19);
-            this.radAmps.TabIndex = 1;
-            this.radAmps.TabStop = true;
-            this.radAmps.Text = "Amps";
-            this.radAmps.UseVisualStyleBackColor = true;
-            // 
             // radVolts
             // 
             this.radVolts.AutoSize = true;
@@ -90,6 +79,19 @@ namespace DonsElectricCostCalculator
             this.radVolts.TabStop = true;
             this.radVolts.Text = "Volts";
             this.radVolts.UseVisualStyleBackColor = true;
+            this.radVolts.CheckedChanged += new System.EventHandler(this.radVolts_CheckedChanged);
+            // 
+            // radAmps
+            // 
+            this.radAmps.AutoSize = true;
+            this.radAmps.Location = new System.Drawing.Point(7, 48);
+            this.radAmps.Name = "radAmps";
+            this.radAmps.Size = new System.Drawing.Size(56, 19);
+            this.radAmps.TabIndex = 1;
+            this.radAmps.TabStop = true;
+            this.radAmps.Text = "Amps";
+            this.radAmps.UseVisualStyleBackColor = true;
+            this.radAmps.CheckedChanged += new System.EventHandler(this.radAmps_CheckedChanged);
             // 
             // txtWatts
             // 
@@ -157,6 +159,7 @@ namespace DonsElectricCostCalculator
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // formMain
             // 
